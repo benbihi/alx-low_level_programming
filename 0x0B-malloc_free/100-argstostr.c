@@ -2,34 +2,42 @@
 #include <stdlib.h>
 
 /**
- * *argstostr - convert arguments on command line to strings
- * @ac: int type
- * @av: pointer to array
- * Return: arguments as strings
+ * argstostr - this function  concatenates all the arguments of your program.
+ * @ac: args count.
+ * @av: arguments
+ * Return: pointer to string.
  */
-
 char *argstostr(int ac, char **av)
 {
-	int size, count, count1, count2 = 0;
-	char *ptr;
+	char *str, *temp;
+	int i, z, length;
 
 	if (ac == 0 || av == NULL)
-	{
 		return (NULL);
-	}
-
-	for (count = 0; count < ac; count++)
+	length = 0;
+	for (i = 0; i < ac; i++)
 	{
-		for (count1 = 0; av[count][count1] != '\0'; count1++)
+		temp = *(av + i);
+		for (z = 0; temp[z]; z++)
 		{
-			size += 1;
+			length++;
 		}
-		size += 1;
+		length += 1;
 	}
-	size += 1;
-
-	ptr = malloc(sizeof(char) * size);
-	if (ptr == NULL)
+	str = malloc(sizeof(char) * length + 1);
+	length = 0;
+	for (i = 0; i < ac; i++)
 	{
-		free(ptr);
-		return (NULL);
+		temp = *(av + i);
+		for (z = 0; temp[z]; ++z)
+		{
+			str[length] = temp[z];
+			length++;
+		}
+			str[length] = '\n';
+			length++;
+	}
+	str[length] = '\0';
+	return (str);
+}
+
