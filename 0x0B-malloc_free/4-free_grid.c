@@ -1,24 +1,21 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * free_grid - function to free memory
- * @grid: pointer to grid of int type
- * @height: int type
- * Return: clean up memory
+ * malloc_checked - fuction that allocates memory and also checks if sucessful
+ * @b: size of memory to allocate.
+ *
+ * Return: pointer to memory, Else if return exit status 98.
  */
-
-void free_grid(int **grid, int height)
+void *malloc_checked(unsigned int b)
 {
-	int y;
+	void *ptr;
 
-	if (grid == NULL || grid == 0)
+	ptr = malloc(b);
+	if (ptr == NULL)
 	{
-		return;
+		free(ptr);
+		exit(98);
 	}
-	for (y = 0; y < height;  y++)
-	{
-		free(grid[y]);
-	}
-	free(grid);
-
+	return (ptr);
+}
