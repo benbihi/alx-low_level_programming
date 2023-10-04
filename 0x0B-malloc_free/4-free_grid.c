@@ -1,21 +1,19 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * malloc_checked - fuction that allocates memory and also checks if sucessful
- * @b: size of memory to allocate.
+ * free_grid - free up the memory of a 2d array
+ * @grid: target memory to free
+ * @height: size of array.
  *
- * Return: pointer to memory, Else if return exit status 98.
  */
-void *malloc_checked(unsigned int b)
+void free_grid(int **grid, int height)
 {
-	void *ptr;
+	int i;
 
-	ptr = malloc(b);
-	if (ptr == NULL)
-	{
-		free(ptr);
-		exit(98);
-	}
-	return (ptr);
+	if (grid == NULL || height <= 0)
+		return;
+	for (i = 0; i < height; i++)
+		free(grid[(height - 1) - i]);
+	free(grid);
 }
