@@ -10,7 +10,7 @@ int main(int argc, __attribute__((unused)) char *argv[])
 	/* we tell the compiler that argv will be unused here */
 
 	/* argc contains the length of argv or number of argument passed */
-	printf("%d\n", argc-1);
+	printf("%d\n", argc - 1);
 
 	return (0);
 }
