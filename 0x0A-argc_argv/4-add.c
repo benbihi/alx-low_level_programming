@@ -25,7 +25,10 @@ int main(int argc, char *argv[])
 		}
 
 		/* update our result to have this number added */
-		result += n;
+		if (n > 0)
+		{
+			result += n;
+		}
 	}
 
 	/* print our final result and return success */
