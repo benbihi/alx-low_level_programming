@@ -1,38 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
-* main - a program that adds positive numbers.
-* @argc: arguments count
-* @argv: arguments vector
-* Return: 0 if succeeded, 1 otherwise.
+*main - adds positive numbers
+*@argc: number of arguments
+*@argv: array of arguments
+*Return: 0 on success, 1 on failure
 */
+
 int main(int argc, char *argv[])
 {
-	/* we'll initialize our final result with 0 to add on */
-	int i, result = 0;
+	int i, j, sum = 0;
 
-	/* start the loop at 1, remember that [0] is the program name */
 	for (i = 1; i < argc; i++)
 	{
-		/* use atoi to convert the current number to a an int */
-		int n = atoi(argv[i]);
-
-		/* if atoi returned 0, that means we got an invalid characters */
-		if (n == 0)
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			printf("Error\n");
-			return (1);
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
 
-		/* update our result to have this number added */
-		if (n > 0)
-		{
-			result += n;
-		}
+		sum += atoi(argv[i]);
 	}
 
-	/* print our final result and return success */
-	printf("%d\n", result);
+	printf("%d\n", sum);
+
 	return (0);
 }
-
