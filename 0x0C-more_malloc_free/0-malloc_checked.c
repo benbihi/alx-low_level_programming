@@ -12,7 +12,7 @@ void *ptr;
 ptr = malloc(b);
 /* and we check that malloc succeeded. If notm exit with code 98 */
 if (ptr == NULL)
-exit(98);
+	exit(98);
 /* everything worked fine */
 return (ptr);
 }
