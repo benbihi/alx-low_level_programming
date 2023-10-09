@@ -1,4 +1,18 @@
 #include <stdlib.h>
+
+/**
+* _strlen - returns string length
+* @s: the string
+* Return: length of the string as an integer
+*/
+int _strlen(char *s)
+{
+int len = 0;
+while (s[len] != '\0')
+len++;
+return (len);
+}
+
 /**
 * string_nconcat - a function that concatenates two strings.
 * @s1: first string
@@ -27,16 +41,4 @@ for (j = 0; j < n2; i++, j++)
 str[i] = s2[j];
 str[i] = '\0';
 return (str);
-}
-/**
-* _strlen - returns string length
-* @s: the string
-* Return: length of the string as an integer
-*/
-int _strlen(char *s)
-{
-int len = 0;
-while (s[len] != '\0')
-len++;
-return (len);
 }
