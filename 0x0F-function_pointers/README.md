@@ -1,1 +1,1 @@
-This directory is containing my 0x0F-function_pointers assignments
+ This is where I'm doing my function pointers assignments
