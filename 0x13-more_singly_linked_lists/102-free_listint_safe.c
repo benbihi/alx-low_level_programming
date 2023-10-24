@@ -1,7 +1,9 @@
 #include "lists.h"
+#include <stdio.h>
+#include "lists.h"
 
 /**
- * check_looped_listfree - check if there is loop in a linked list and
+ * check_looped_listint - check if there is loop in a linked list and
  *            counts the number of unique nodes in a looped linked list
  * @head: A pointer to the head of the listint_t to check.
  *
@@ -9,9 +11,9 @@
  *         Otherwise - the number of unique nodes in the list.
  */
 
-size_t check_looped_listfree(listint_t *head)
+size_t check_looped_listint(const listint_t *head)
 {
-	listint_t *tortoise, *hare;
+	const listint_t *tortoise, *hare;
 	size_t nodes = 1;
 
 	if (head == NULL || head->next == NULL)
@@ -45,34 +47,29 @@ size_t check_looped_listfree(listint_t *head)
 		}
 		return (nodes);
 	}
+
 return (0);
 }
 
 /**
- * free_listint_safe - Frees a listint_t list safely
- *            (i.e. can free lists containing loops)
- * @h: A pointer to the address of
- *     the head of the listint_t list.
+ * print_listint_safe - Prints a listint_t list safely.
+ * @head: A pointer to the head of the listint_t list.
  *
- * Return: The size of the list that was freed.
- *
- * Description: The function sets the head to NULL.
+ * Return: The number of nodes in the list.
  */
-
-size_t free_listint_safe(listint_t **h)
+size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *tmp;
-	size_t nodes, index;
+	size_t nodes, index = 0;
 
-	nodes = check_looped_listfree(*h);
+	nodes = check_looped_listint(head);
+
 	if (nodes == 0)
 	{
-		while (h != NULL && *h != NULL)
+		while (head != NULL)
 		{
 			nodes++;
-			tmp = (*h)->next;
-			free(*h);
-			*h = tmp;
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
 		}
 	}
 
@@ -80,13 +77,12 @@ size_t free_listint_safe(listint_t **h)
 	{
 		for (index = 0; index < nodes; index++)
 		{
-			tmp = (*h)->next;
-			free(*h);
-			*h = tmp;
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
 		}
-		*h = NULL;
+
+		printf("-> [%p] %d\n", (void *)head, head->n);
 	}
 
-	h = NULL;
 	return (nodes);
 }
