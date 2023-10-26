@@ -22,4 +22,4 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 		m = m >> 1;
 	}
 return (num_flips);
-
+}
