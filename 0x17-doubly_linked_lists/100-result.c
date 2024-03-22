@@ -1,35 +1,64 @@
 #include <stdio.h>
 
-int is_palindrome(int num) {
-  int reversed = 0, remainder, original;
-  original = num;
+int main()
 
-  // Extract digits and reverse the number
-  while (num != 0) {
-    remainder = num % 10;
-    reversed = reversed * 10 + remainder;
-    num /= 10;
-  }
+{
+    int i = 10;
+    int j = 10;
+    int a = 0;
+    int b = 0;
+    int array[100] = {0};
+    int divider = 10;
+    int num;
+    int great;
+    int product;
+    int n;
+    int flag;
 
-  // Check if original and reversed are equal
-  return (original == reversed);
-}
+    /*Loop through first 2 digit number and second 2 digit number*/
 
-int main() {
-  int largest_palindrome = 0, a, b, product;
+    while (i<100)
+    {
+        while (j < 100)
+        {
+            product = i*j;
+            array [a] = product % 10;
+            n = product / divider; 
 
-  // Iterate through all products of two 3-digit numbers (descending order for efficiency)
-  for (a = 999; a >= 100; a--) {
-    for (b = a; b >= 100; b--) {
-      product = a * b;
-      if (is_palindrome(product) && product > largest_palindrome) {
-        largest_palindrome = product;
-      }
+            while (n != 0)
+            {
+                a++; 
+                num = n%10;
+                divider *=10;
+                array[a]=num;
+                n = product/divider;
+            }
+
+            flag = 0;
+
+            while (b<a) 
+            {
+                if (array[b] != array[a])
+                {
+                    flag = 1;   
+                }
+                b++;
+                a--;
+            }
+
+            if (flag == 0)
+            {
+                great = product;
+            }
+
+            j++;
+            a = 0;
+            b = 0;
+        }     
+        i++;
     }
-  }
 
-  printf("%d\n", largest_palindrome);  // Print the largest palindrome
+    printf("The largest palindrome is %d \n", great);
 
-  return 0;
+    return 0;
 }
-
