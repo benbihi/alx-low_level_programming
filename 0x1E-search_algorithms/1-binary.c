@@ -1,9 +1,9 @@
 #include "search_algos.h"
 /**
  * binary_search - do bin search
- * array: the search field
- * size: the size of the array
- * value: the search value
+ * @array: the search field
+ * @size: the size of the array
+ * @value: the search value
  * Return: int the index or -1 if not found
  */
 
